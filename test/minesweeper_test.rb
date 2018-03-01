@@ -13,10 +13,17 @@ end
 test 'Get the neighbors of a cell' do
   ms = MineSweeper.new
 
-  assert ms.neighbors(3, 2) == [ {f: 2, c: 1}, {f: 2, c: 2}, {f: 2, c: 3},
-                                 {f: 3, c: 1}, {f: 3, c: 3},
-                                 {f: 4, c: 1}, {f: 4, c: 2}, {f: 4, c: 3} ]
+  assert ms.neighbors(3, 2) == [ {r: 2, c: 1}, {r: 2, c: 2}, {r: 2, c: 3},
+                                 {r: 3, c: 1}, {r: 3, c: 3},
+                                 {r: 4, c: 1}, {r: 4, c: 2}, {r: 4, c: 3} ]
 end
+
+test 'Get the neighbors of a cell' do
+  ms = MineSweeper.new
+
+  assert ms.neighbors(0, 0) == [ {r: 0, c: 1}, {r: 1, c: 0}, {r: 1, c: 1} ]
+end
+
 
 test 'Mine the board with 2 mines per row by default' do
   ms = MineSweeper.new
@@ -33,3 +40,18 @@ test 'Mine the board with 2 mines per row by default' do
     assert mine_counter == 2
   end
 end
+
+# test 'Fill cells with mine counters' do
+#   ms = MineSweeper.new
+
+#   ms.mine!
+#   board = ms.board
+#   mines = (0..ms.board[0].size-1).select { |i| ms.board[0][i] == 'x' }
+
+#   ms.fill_cells!
+
+#   ms.neighbors.each do |n|
+#     assert ms.board[ n[:r], n[:c] ] > 0
+#   end
+# end
+
