@@ -5,9 +5,9 @@ function fill_board(board_json) {
     board = board_json;
 
     var table = document.createElement('table');
-    table.setAttribute('border','1');
-    table.setAttribute('width','50%');
-
+    //table.setAttribute('border','1');
+    table.setAttribute('width','10%');
+    table.id = 'boardTable';
     document.getElementById("board").appendChild(table);
 
     for (var row = 0; row < board.length; row++) {
@@ -17,11 +17,11 @@ function fill_board(board_json) {
 
         for (var col = 0; col < cols.length; col++) {
           var td = tr.insertCell(col);
-            td.innerHTML = board_json[row][col];
+            //td.innerHTML = board_json[row][col];
+            td.className = "sq"
         }
     }
 
-    console.log(cols.length);
 }
 
 function get_board() {
