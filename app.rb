@@ -6,12 +6,12 @@ require './mine_sweeper'
 require 'json'
 
 Cuba.use Rack::Static,
-         urls: %w[/js /css /img],
+         urls: %w[/js /css /img /static],
          root: File.expand_path("./public", __dir__)
 
 Cuba.define do
 
-  on get, 'mine_sweeper' do
+  on post, 'mine_sweeper' do
     ms = MineSweeper.new
     ms.start!
 
