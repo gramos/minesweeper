@@ -12,6 +12,11 @@ class MineSweeper
     end
   end
 
+  def start!
+    mine!
+    fill_cells!
+  end
+
   def neighbors(row, col)
     [ { r: ( row -1 ), c: (col -1) }, { r: ( row -1 ), c: col },
       { r: ( row -1 ), c: (col +1) },
