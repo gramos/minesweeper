@@ -2,30 +2,15 @@
 <html lang='en' class=''>
   <head>
     <meta charset='UTF-8'><meta name="robots" content="noindex">
+    <script src="/../js/base.js"></script>
   </head>
 
-  <script>
-    var xhr = new XMLHttpRequest();
-    var url = "http://localhost:9393/mine_sweeper";
-    xhr.open("POST", url, true);
-
-    //xhr.setRequestHeader("Content-type", "application/json");
-
-    xhr.onreadystatechange = function () {
-      if (xhr.readyState === 4 && xhr.status === 200) {
-        var board_json = JSON.parse(xhr.responseText);
-        console.log(board_json);
-      }
-    };
-
-    xhr.send();
-  </script>
-
   <body>
+    <h1>MineSweeper</h1>
 
-    <table border="1">
-    </table>
+    <a href="#" onclick="get_board();"> Start Game</a>
+    <div id="board">
 
-    <a href="#">Start Game</a>
+    </div>
   </body>
 </html>
