@@ -5,23 +5,32 @@ function fill_board(board_json) {
     board = board_json;
 
     var table = document.createElement('table');
-    //table.setAttribute('border','1');
+
     table.setAttribute('width','10%');
     table.id = 'boardTable';
     document.getElementById("board").appendChild(table);
 
     for (var row = 0; row < board.length; row++) {
         var tr = table.insertRow(row);
-        tr.id = "r-" + row;
-        cols = board[row];
+        cols   = board[row];
 
         for (var col = 0; col < cols.length; col++) {
           var td = tr.insertCell(col);
-            //td.innerHTML = board_json[row][col];
-            td.className = "sq"
+
+          td.className = "sq"
+          td.id = "r" + row + "c" + col;
+
+
+
+          td.addEventListener('mousedown', function (event) {
+            c = this.id.split("c")[1];
+            r = this.id.split("c")[0].split("r")[1];
+
+            //alert("r: " + r + "c: " + c);
+            this.innerHTML = board_json[r][c];
+          });
         }
     }
-
 }
 
 function get_board() {
