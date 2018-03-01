@@ -1,6 +1,7 @@
 class MineSweeper
 
-  attr_reader :board
+  attr_accessor :board
+  attr_accessor :mines
 
   def initialize
     @board = []
@@ -20,8 +21,11 @@ class MineSweeper
       { r: ( row +1 ), c: (col -1) }, { r: ( row +1 ), c: col },
       { r: ( row +1 ), c: (col +1) },
     ].map{|n|
-      n if ( 0..@board[0].size ).include? n[:r] and
-        ( 0..@board.size ).include? n[:c]
+      row_limit = @board[0].size - 1
+      col_limit = @board.size - 1
+
+      n if ( 0..row_limit ).include? n[:r] and
+           ( 0..col_limit  ).include? n[:c]
     }.compact
   end
 
@@ -42,14 +46,17 @@ class MineSweeper
     end
   end
 
-  def fill_cells!
+  def bomb?(r, c)
+    @board[r][c] == 'x'
+  end
 
+  def fill_cells!
     @mines.each do |m|
-      puts m.inspect
 
       neighbors( m[:r], m[:c] ).each do |n|
-        puts n.inspect
-        @board[ n[:r], n[:c] ] += 1
+        unless bomb?(n[:r], n[:c])
+          @board[ n[:r] ] [ n[:c] ] += 1
+        end
       end
 
     end

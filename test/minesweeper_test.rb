@@ -41,17 +41,36 @@ test 'Mine the board with 2 mines per row by default' do
   end
 end
 
-# test 'Fill cells with mine counters' do
-#   ms = MineSweeper.new
+test 'Fill cells with mine counters' do
+  ms = MineSweeper.new
+  ms.board[0][0] = 'x'
 
-#   ms.mine!
-#   board = ms.board
-#   mines = (0..ms.board[0].size-1).select { |i| ms.board[0][i] == 'x' }
+  ms.mines = [{r: 0, c:0}, {r: 2, c: 2}, {r: 3, c: 3}]
 
-#   ms.fill_cells!
+  mined_board = [
+    ['x', 0,   0,   0, 0, 0],
+    [  0, 0,   0,   0, 0, 0],
+    [  0, 0, 'x',   0, 0, 0],
+    [  0, 0,   0, 'x', 0, 0],
+    [  0, 0,   0,   0, 0, 0],
+    [  0, 0,   0,   0, 0, 0]
+  ]
 
-#   ms.neighbors.each do |n|
-#     assert ms.board[ n[:r], n[:c] ] > 0
-#   end
-# end
+  ms.board = mined_board
+
+  pre_calculated_board = [
+    ['x', 1,   0,   0, 0, 0],
+    [  1, 2,   1,   1, 0, 0],
+    [  0, 1, 'x',   2, 1, 0],
+    [  0, 1,   2, 'x', 1, 0],
+    [  0, 0,   1,   1, 1, 0],
+    [  0, 0,   0,   0, 0, 0]
+  ]
+
+  ms.fill_cells!
+
+  assert pre_calculated_board == ms.board
+end
+
+
 
