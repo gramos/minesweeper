@@ -10,7 +10,6 @@ Cuba.use Rack::Static,
          root: File.expand_path("./public", __dir__)
 
 Cuba.define do
-
   on post, 'mine_sweeper' do
     ms = MineSweeper.new
     ms.start!
@@ -18,4 +17,10 @@ Cuba.define do
     res.write JSON.generate(ms.board)
   end
 
+  on put, 'mine_sweeper/:row/:col', param(:board) do |board|
+    ms       = MineSweeper.new
+    ms.board = JSON.parse(board)
+
+    res.write JSON.generate( ms.no_mines_adjacents(n) )
+  end
 end

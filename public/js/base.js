@@ -1,5 +1,4 @@
 function fill_board(board_json) {
-    console.log(board_json);
     var board = [];
     var cols  = [];
     board = board_json;
@@ -32,6 +31,13 @@ function fill_board(board_json) {
           });
         }
     }
+}
+
+function expose_no_mines_adjacents(row, col) {
+}
+
+function neighbors(row, col) {
+
 }
 
 function get_board() {

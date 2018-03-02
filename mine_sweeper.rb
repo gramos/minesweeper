@@ -34,6 +34,16 @@ class MineSweeper
     }.compact
   end
 
+  def no_mines_adjacents(cell, exclude_list = [cell])
+    if @board[ cell[:r] ] [ cell[:c] ] == 0
+      n_list = neighbors(cell[:r], cell[:c]) - exclude_list
+      n      = n_list.pop
+      no_mines_adjacents(n, ( exclude_list + [n] ) )
+    else
+      return exclude_list
+    end
+  end
+
   def mine!
     @board.size.times do |r|
       c1 = rand(6)

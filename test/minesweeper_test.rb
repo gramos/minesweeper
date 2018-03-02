@@ -24,6 +24,40 @@ test 'Get the neighbors of a cell' do
   assert ms.neighbors(0, 0) == [ {r: 0, c: 1}, {r: 1, c: 0}, {r: 1, c: 1} ]
 end
 
+test 'Get no_mines_adjacents' do
+  ms = MineSweeper.new
+  ms.mines = [{r: 0, c:0}, {r: 2, c: 2}, {r: 3, c: 3}]
+
+  mined_board = [
+    ['x', 0,   0,   0, 0, 0],
+    [  0, 0,   0,   0, 0, 0],
+    [  0, 0, 'x',   0, 0, 0],
+    [  0, 0,   0, 'x', 0, 0],
+    [  0, 0,   0,   0, 0, 0],
+    [  0, 0,   0,   0, 0, 0]
+  ]
+
+  ms.board = mined_board
+
+  pre_calculated_board = [
+    ['x', 1,   0,   0, 0, 0],
+    [  1, 2,   1,   1, 0, 0],
+    [  0, 1, 'x',   2, 1, 0],
+    [  0, 1,   2, 'x', 1, 0],
+    [  0, 0,   1,   1, 1, 0],
+    [  0, 0,   0,   0, 0, 0]
+  ]
+
+  adjacents = [{r: 0, c: 4}, {r: 0, c: 3}, {r: 0, c: 2}, {r: 0, c: 1},
+               {r: 1, c: 5}, {r: 1, c: 4}, {r: 1, c: 3},
+               {r: 2, c: 5},
+               {r: 3, c: 5},
+               {r: 0, c: 5}, {r: 0, c: 4}, {r: 0, c: 3}, {r: 0, c: 2}, {r: 0, c: 1}]
+
+  #puts ms.no_mines_adjacents({r: 0, c: 5}).inspect
+  #puts pre_calculated_board.inspect
+  # assert ms.no_mines_adjacents({r: 0, c: 5}) == adjacents
+end
 
 test 'Mine the board with 2 mines per row by default' do
   ms = MineSweeper.new
