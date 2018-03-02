@@ -11,7 +11,7 @@ Cuba.use Rack::Static,
 
 Cuba.define do
 
-  on post, 'mine_sweeper/:row/:col/:board' do |row, col, board|
+  on post, 'adjacents_mine_sweeper/:row/:col/:board' do |row, col, board|
     ms       = MineSweeper.new
     ms.board = JSON.parse(URI.decode(board))
 

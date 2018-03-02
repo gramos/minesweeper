@@ -49,10 +49,11 @@ function open_modal(){
    get_board();
   }
 }
+
 function get_neighbors(row, col, board_json) {
     var xhr = new XMLHttpRequest();
 
-    var url = "http://minesweeper.lacasa.tech/mine_sweeper/" + row +
+    var url = "http://minesweeper.lacasa.tech/adjacents_mine_sweeper/" + row +
               "/" + col + "/" + JSON.stringify(board_json);
 
     xhr.onreadystatechange = function () {
