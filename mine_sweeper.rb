@@ -47,17 +47,9 @@ class MineSweeper
   def mine!
     @board.size.times do |r|
       c1 = rand(6)
-      c2 = rand(6)
-
-      while(c2 == c1) do
-        c2 = rand(6)
-      end
 
       @mines << {r: r, c: c1}
-      #@mines << {r: r, c: c2}
-
       @board[r][c1] = 'x'
-      #@board[r][c2] = 'x'
     end
   end
 
@@ -74,5 +66,5 @@ class MineSweeper
       end
     end
   end
-  
+
 end

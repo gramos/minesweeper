@@ -56,7 +56,7 @@ test 'Get no_mines_adjacents' do
 
 end
 
-test 'Mine the board with 2 mines per row by default' do
+test 'Mine the board with 1 mine per row by default' do
   ms = MineSweeper.new
 
   ms.mine!
@@ -68,7 +68,7 @@ test 'Mine the board with 2 mines per row by default' do
       mine_counter += 1 if ms.board[r][c] == 'x'
     end
 
-    assert mine_counter == 2
+    assert mine_counter == 1
   end
 end
 
