@@ -63,3 +63,14 @@ table{
     line-height: 18px;
     cursor: pointer;
 }
+
+.sqExposed {
+    background-color: #bbbbbb;
+    border-width: 1px;
+    border-color: #999999;
+    padding: 1px;
+    cursor: default;
+}
+.sqExploded {
+    color: #ff0000;
+}

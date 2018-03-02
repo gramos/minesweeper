@@ -20,14 +20,15 @@ function fill_board(board_json) {
           td.className = "sq"
           td.id = "r" + row + "c" + col;
 
-
-
           td.addEventListener('mousedown', function (event) {
             c = this.id.split("c")[1];
             r = this.id.split("c")[0].split("r")[1];
 
-            //alert("r: " + r + "c: " + c);
-            this.innerHTML = board_json[r][c];
+              if (board_json[r][c] == "x") {
+                this.innerHTML = '<i class="fas fa-bomb sqExploded"></i>';
+              }else{
+                 this.innerHTML = board_json[r][c];
+              }
           });
         }
     }
