@@ -6,7 +6,7 @@ require './mine_sweeper'
 require 'json'
 
 Cuba.use Rack::Static,
-         urls: %w[/js /css /img /static],
+         urls: %w[/js /css /img /play],
          root: File.expand_path("./public", __dir__)
 
 Cuba.define do
