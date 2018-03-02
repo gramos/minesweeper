@@ -1,6 +1,11 @@
 Minesweeper
 ============
 
+Live example
+=============
+
+[Play now!](http://minesweeper.lacasa.tech/play/)
+
 Install
 ========
 
@@ -9,6 +14,19 @@ Install
 Run the server:
 
 ```rackup```
+
+Tools
+======
+
+API:
+----
+
+ruby + cuba + cutest
+
+FrontEnd:
+---------
+
+HTML + Javascript
 
 API
 ===
@@ -33,6 +51,8 @@ like this:
 this like a matrix where the 'x' means there is a mine in that position and
 the number means the number of adjacents mines.
 
+```curl -X POST http://minesweeper.lacasa.tech/mine_sweeper```
+
 Adjacents to be revealed
 -------------------------
 
@@ -40,10 +60,23 @@ Adjacents to be revealed
 
 This simulates a click action to get the adjacents squares to be revealed
 
-Tests
-=====
+Run tests
+=========
 
 cutest test/*_test.rb
 
+TODO
+====
 
+* Change board param in /mine_sweeper/:row/:col/:board, is not a good idea
+  sending the board in the URL.
 
+* Adjacents is not fully working.
+
+* Set headers "Accept: application/json"
+
+* Move API url to a YAML or something like that in the javascript code.
+
+* Set http response status.
+
+* Add http test for API.
