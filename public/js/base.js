@@ -38,7 +38,7 @@ function fill_board(board_json) {
 function get_neighbors(row, col, board_json) {
     var xhr = new XMLHttpRequest();
 
-    var url = "http://localhost:9393/change_mine_sweeper/" + row +
+    var url = "http://microteatro.lacasa.tech/change_mine_sweeper/" + row +
               "/" + col + "/" + JSON.stringify(board_json);
 
     xhr.onreadystatechange = function () {
@@ -61,7 +61,7 @@ function get_neighbors(row, col, board_json) {
 
 function get_board() {
     var xhr = new XMLHttpRequest();
-    var url = "http://localhost:9393/mine_sweeper";
+    var url = "http://microteatro.lacasa.tech/mine_sweeper";
 
     var board_json = '';
 
