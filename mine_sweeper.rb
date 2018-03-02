@@ -35,9 +35,6 @@ class MineSweeper
   end
 
   def no_mines_adjacents(cell, exclude_list = [cell])
-    #require 'pry'
-    #binding.pry
-    
     if @board[ cell[:r] ] [ cell[:c] ].to_i == 0
       n_list = neighbors(cell[:r], cell[:c]) - exclude_list
       n      = n_list.pop
@@ -70,14 +67,12 @@ class MineSweeper
 
   def fill_cells!
     @mines.each do |m|
-
       neighbors( m[:r], m[:c] ).each do |n|
         unless bomb?(n[:r], n[:c])
           @board[ n[:r] ] [ n[:c] ] += 1
         end
       end
-
     end
-
   end
+  
 end

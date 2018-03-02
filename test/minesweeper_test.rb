@@ -54,9 +54,6 @@ test 'Get no_mines_adjacents' do
                {r: 3, c: 5},
                {r: 0, c: 5}, {r: 0, c: 4}, {r: 0, c: 3}, {r: 0, c: 2}, {r: 0, c: 1}]
 
-  #puts ms.no_mines_adjacents({r: 0, c: 5}).inspect
-  #puts pre_calculated_board.inspect
-  # assert ms.no_mines_adjacents({r: 0, c: 5}) == adjacents
 end
 
 test 'Mine the board with 2 mines per row by default' do
