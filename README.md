@@ -56,9 +56,10 @@ the number means the number of adjacents mines.
 Adjacents to be revealed
 -------------------------
 
-```POST /mine_sweeper/:row/:col/:board```
+```POST /adjacents_mine_sweeper/:row/:col/:board```
 
-This simulates a click action to get the adjacents squares to be revealed
+This simulates a click action to get the adjacents squares to be revealed,
+the board param should be sent in JSON format.
 
 Run tests
 =========
@@ -67,6 +68,8 @@ cutest test/*_test.rb
 
 TODO
 ====
+
+* Add API versioning /v1 
 
 * Change board param in /mine_sweeper/:row/:col/:board, is not a good idea
   sending the board in the URL.
