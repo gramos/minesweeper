@@ -8,12 +8,22 @@
     <link href="/../css/minesweeper.css" rel="stylesheet" />
   </head>
 
-  <body>
+  <body onload="get_board()">
     <h1>MineSweeper</h1><small>by Gramos</small><br /><br />
-    <a href="#" onclick="get_board();">[ Start Game ]</a>
+    <a href="#" onclick="document.getElementById('boardTable').remove();get_board();">[ Reset Game ]</a>
     <div class="container">
       <div id="board">
       </div>
+      <!-- The Modal -->
+      <div id="modalMessage" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-content">
+          <span class="close">&times;</span>
+          <p>Game Over :(...</p>
+        </div>
+
+        </div>
     </div>
   </body>
 </html>
