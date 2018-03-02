@@ -16,7 +16,7 @@ function fill_board(board_json) {
         for (var col = 0; col < cols.length; col++) {
           var td = tr.insertCell(col);
 
-          td.className = "sq"
+          td.className = "sq";
           td.id = "r" + row + "c" + col;
 
           td.addEventListener('mousedown', function (event) {
@@ -25,19 +25,38 @@ function fill_board(board_json) {
 
               if (board_json[r][c] == "x") {
                 this.innerHTML = '<i class="fas fa-bomb sqExploded"></i>';
-              }else{
-                 this.innerHTML = board_json[r][c];
+              } else if (board_json[r][c] == "0"){
+                  get_neighbors(r, c, board_json);
+              } else {
+                  this.innerHTML = board_json[r][c];
               }
           });
         }
     }
 }
 
-function expose_no_mines_adjacents(row, col) {
-}
+function get_neighbors(row, col, board_json) {
+    var xhr = new XMLHttpRequest();
 
-function neighbors(row, col) {
+    var url = "http://localhost:9393/change_mine_sweeper/" + row +
+              "/" + col + "/" + JSON.stringify(board_json);
 
+    xhr.onreadystatechange = function () {
+      if (xhr.readyState === 4 && xhr.status === 200) {
+        adjacents = JSON.parse(xhr.responseText);
+          for (var i = 0; i < adjacents.length; i++) {
+              var element = adjacents[i];
+              cell = document.getElementById("r"+ element['r']  + "c" + element['c']);
+              cell.innerHTML = element['data'];
+              cell.className = "sq sqExposed";
+          }
+
+      }
+
+    };
+
+    xhr.open("POST", url, true);
+    xhr.send();
 }
 
 function get_board() {
